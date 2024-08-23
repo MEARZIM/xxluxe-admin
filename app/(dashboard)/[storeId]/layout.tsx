@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 
+import Navbar from "@/components/navbar";
 import { prismadb } from "@/lib/prismaDB"
 
 
@@ -24,9 +25,7 @@ export default async function DashboardLayout({
 
     return (
         <>
-            <div>
-                there will be the navbar
-            </div>
+            <Navbar />
             {children}
         </>
     )
