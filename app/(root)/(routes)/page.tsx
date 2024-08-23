@@ -16,10 +16,6 @@ export default function Home() {
   }, [isOpen, onOpen])
 
   return (
-    <>
-      <div className="font-medium">
-        Root Page
-      </div>
-    </>
+    null
   );
 }

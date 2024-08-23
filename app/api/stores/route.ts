@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs/server";
 
 import { prismadb } from "@/lib/prismaDB";
 
@@ -7,7 +8,7 @@ export async function POST(
 ) {
     try {
         // Have to Authenticate first
-        const userId = "12345"
+        const { userId } = auth();
 
         const body = await req.json();
         const { name } = body;
@@ -20,7 +21,7 @@ export async function POST(
         const store  = await prismadb.store.create({
             data: { 
                 name: name, 
-                userId: userId 
+                userId: userId as string
             },
         })
 
