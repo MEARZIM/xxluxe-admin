@@ -24,7 +24,6 @@ import { Button } from "@/components/ui/button"
 import Heading from "@/components/ui/heading"
 import { Separator } from "@/components/ui/separator"
 import AlertModal from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
 import { ImageUpload } from "@/components/ui/image-upload";
 
 interface BillBoardFormProps {
@@ -39,9 +38,8 @@ const formSchema = z.object({
 type BillBoardFormValues = z.infer<typeof formSchema>
 
 export const BillBoardForm = ({ initialData }: BillBoardFormProps) => {
-    const parmas = useParams();
+    const params = useParams();
     const router = useRouter();
-    const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -65,12 +63,12 @@ export const BillBoardForm = ({ initialData }: BillBoardFormProps) => {
 
             setLoading(true);
             if(initialData) {
-                await axios.patch(`/api/${parmas.storeId}/billboards/${parmas.billboardId}`, data);
+                await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, data);
             } else {
-                await axios.post(`/api/${parmas.storeId}/billboards`, data);
+                await axios.post(`/api/${params.storeId}/billboards`, data);
             }
             router.refresh();
-            router.push(`/${parmas.storeId}/billboards/`);
+            router.push(`/${params.storeId}/billboards/`);
             toast.success(toastMsg);
 
         } catch (error) {
@@ -85,8 +83,9 @@ export const BillBoardForm = ({ initialData }: BillBoardFormProps) => {
         try {
 
             setLoading(true);
-            await axios.delete(`/api/${parmas.storeId}/billboards/${parmas.billboardId}`);
-            router.push("/");
+            await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
+            router.push(`/${params.storeId}/billboards`);
+            router.refresh();
             toast.success("Billboard Deleted.");
 
         } catch (error) {
