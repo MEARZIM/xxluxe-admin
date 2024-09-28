@@ -12,7 +12,11 @@ export async function POST(
 
         const body = await req.json();
         const { name } = body;
-        console.log(name);
+
+        if (!userId) {
+            return new NextResponse("User is not authenticated", {status: 400});
+        }
+
 
         if (!name) {
             return new NextResponse("Name is required", {status: 400});

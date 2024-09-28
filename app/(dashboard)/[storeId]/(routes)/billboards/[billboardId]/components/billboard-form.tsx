@@ -70,6 +70,7 @@ export const BillBoardForm = ({ initialData }: BillBoardFormProps) => {
                 await axios.post(`/api/${parmas.storeId}/billboards`, data);
             }
             router.refresh();
+            router.push(`/${parmas.storeId}/billboards/`);
             toast.success(toastMsg);
 
         } catch (error) {
