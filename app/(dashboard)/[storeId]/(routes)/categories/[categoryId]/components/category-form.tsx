@@ -95,7 +95,7 @@ export const CategoryForm = ({ initialData, billboards }: CategoryFormProps) => 
         try {
 
             setLoading(true);
-            await axios.delete(`/api/${params.storeId}/categories/${params.CategoryId}`);
+            await axios.delete(`/api/${params.storeId}/categories/${params.categoryId}`);
             router.push(`/${params.storeId}/categories`);
             router.refresh();
             toast.success("Categories Deleted.");
