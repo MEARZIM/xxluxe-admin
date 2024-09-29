@@ -22,31 +22,31 @@ export const ApiList = ({
         <>
             <ApiAlert
                 title={"GET"}
-                description={`${baseUrl}/${entityIdName}`}
+                description={`${baseUrl}/${entityName}`}
                 variant={"public"}
             />
 
             <ApiAlert
                 title={"GET"}
-                description={`${baseUrl}/${entityIdName}/{${entityIdName}}`}
+                description={`${baseUrl}/${entityName}/{${entityIdName}}`}
                 variant={"public"}
             />
 
             <ApiAlert
                 title={"POST"}
-                description={`${baseUrl}/${entityIdName}`}
+                description={`${baseUrl}/${entityName}`}
                 variant={"admin"}
             />
 
             <ApiAlert
                 title={"PATCH"}
-                description={`${baseUrl}/${entityIdName}/{${entityIdName}}`}
+                description={`${baseUrl}/${entityName}/{${entityIdName}}`}
                 variant={"admin"}
             />
 
             <ApiAlert
                 title={"DELETE"}
-                description={`${baseUrl}/${entityIdName}/{${entityIdName}}`}
+                description={`${baseUrl}/${entityName}/{${entityIdName}}`}
                 variant={"admin"}
             />
         </>
