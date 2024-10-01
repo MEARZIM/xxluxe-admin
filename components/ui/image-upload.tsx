@@ -32,16 +32,11 @@ export const ImageUpload = ({
     }, [])
 
 
-    const onUpload = (url: string) => {
-        if(url){
-            onChange(url);
-        }
-    }
 
     if (!isMounted) {
         return null;
     }
-    
+    // console.log(value);
     return (
         <>
             <div className="mb-4 flex items-center gap-4">
@@ -64,12 +59,13 @@ export const ImageUpload = ({
                 }
             </div>
             <CldUploadWidget uploadPreset="ljd55qru"
-                onSuccess={(result: any, { widget }) => {
-                    onUpload(result.info.secure_url);  // { public_id, secure_url, etc }
+                
+                onSuccess={(result: any) => {
+                    // Have to add multiple images
+                    // It only supports one image
+                    onChange(result.info.secure_url);
                 }}
-                onQueuesEnd={(result, { widget }) => {
-                    widget.close();
-                }}
+
             >
                 {({ open }) => {
                     return (

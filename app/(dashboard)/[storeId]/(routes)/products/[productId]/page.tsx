@@ -1,0 +1,57 @@
+import React from 'react'
+import { prismadb } from '@/lib/prismaDB';
+
+import { ProductForm } from './components/product-form';
+
+const DynamicProductsPage = async ({
+    params
+}: {
+    params: {
+        productsId: string;
+        storeId: string;
+    }
+}) => {
+
+
+    const Products = await prismadb.product.findFirst({
+        where: {
+            id: params.productsId
+        },
+        include: {
+            images: true
+        }
+    });
+
+    const categories = await prismadb.category.findMany({
+        where: {
+            storeId: params.storeId
+        }
+    });
+
+    const sizes = await prismadb.size.findMany({
+        where: {
+            storeId: params.storeId
+        }
+    });
+
+    const colors = await prismadb.color.findMany({
+        where: {
+            storeId: params.storeId
+        }
+    });
+
+    return (
+        <div className='flex-col'>
+            <div className='flex-1 space-y-4 p-8'>
+                <ProductForm
+                    initialData={Products}
+                    categories={categories}
+                    colors={colors}
+                    sizes={sizes}
+                />
+            </div>
+        </div>
+    )
+}
+
+export default DynamicProductsPage
