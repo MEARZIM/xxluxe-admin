@@ -111,12 +111,6 @@ export async function GET(
     { params }: { params: { categoryId: string } }
 ) {
     try {
-    
-        const { userId } = auth();
-
-        if (!userId) {
-            return new NextResponse("Unauthenticated User", { status: 401 });
-        }
 
         if (!params.categoryId) {
             return new NextResponse("categoryId Id is required", {status: 400});

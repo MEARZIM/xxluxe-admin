@@ -60,12 +60,6 @@ export async function GET(
     { params }: { params: { storeId: string } }
 ) {
     try {
-        // Have to Authenticate first
-        const { userId } = auth();
-
-        if (!userId) {
-            return new NextResponse("User is not authenticated", {status: 401});
-        }
 
         if (!params.storeId) {
             return new NextResponse("Store Id is required", {status: 400});
