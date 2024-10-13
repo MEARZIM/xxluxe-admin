@@ -164,8 +164,10 @@ export async function GET(
     { params }: { params: { productId: string } }
 ) {
     try {
-
+        console.log(params.productId);
+        
         if (!params.productId) {
+            console.log("Product")
             return new NextResponse("productId Id is required", { status: 400 });
         }
 
@@ -180,7 +182,7 @@ export async function GET(
                 size: true
             },
         })
-
+        console.log(product)
         return NextResponse.json(product);
 
     } catch (error) {

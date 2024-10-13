@@ -7,15 +7,14 @@ const DynamicProductsPage = async ({
     params
 }: {
     params: {
-        productsId: string;
+        productId: string;
         storeId: string;
     }
 }) => {
 
-
     const Products = await prismadb.product.findFirst({
         where: {
-            id: params.productsId
+            id: params.productId
         },
         include: {
             images: true
