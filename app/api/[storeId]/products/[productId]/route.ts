@@ -164,7 +164,7 @@ export async function GET(
     { params }: { params: { productId: string } }
 ) {
     try {
-        console.log(params.productId);
+        // console.log(params.productId);
         
         if (!params.productId) {
             console.log("Product")
@@ -182,7 +182,7 @@ export async function GET(
                 size: true
             },
         })
-        console.log(product)
+        // console.log(product)
         return NextResponse.json(product);
 
     } catch (error) {

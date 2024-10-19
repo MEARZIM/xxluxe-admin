@@ -5,7 +5,7 @@ import { prismadb } from "@/lib/prismaDB";
 import { stripe } from "@/lib/stripe";
 
 const corsHeaders= {
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "http://localhost:3001",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
 }
