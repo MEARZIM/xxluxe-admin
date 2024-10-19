@@ -73,7 +73,7 @@ export async function POST(
         });
 
         const stripeSession = await stripe.checkout.sessions.create({
-            success_url: `${process.env.STORE_URL}/cart?sucess=1`,
+            success_url: `${process.env.STORE_URL}/cart?success=1`,
             cancel_url: `${process.env.STORE_URL}/cart?canceled=1`,
             line_items,
             mode: "payment",
