@@ -64,7 +64,7 @@ export const ProductForm = ({
     sizes,
     colors
 }: ProductsFormProps) => {
-    console.log(initialData)
+    // console.log(initialData)
     const params = useParams();
     const router = useRouter();
 
